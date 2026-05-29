@@ -60,5 +60,78 @@
         </div>
       </div>
     </nav>
+    <!-- tab -->
+    <main class="w-10/12 mx-auto">
+      <div class="flex gap-2 mt-20 bg-white p-5 rounded shadow-xs">
+        <button
+          id="all-btn"
+          onclick="togglebtn('all-btn')"
+          class="btn btn-primary min-w-[100px]"
+        >
+          All
+        </button>
+        <button
+          id="open-btn"
+          onclick="togglebtn('open-btn')"
+          class="btn min-w-[100px]"
+        >
+          Open
+        </button>
+        <button
+          id="close-btn"
+          onclick="togglebtn('close-btn')"
+          class="btn min-w-[100px]"
+        >
+          Closed
+        </button>
+      </div>
+      <!-- section -->
+      <section class="bg-white my-5 rounded">
+        <div id="loading-spinner" class="flex justify-center">
+          <span class="loading loading-dots loading-xl"></span>
+        </div>
+
+        <!-- counting -->
+        <div
+          class="flex justify-between items-center p-3 mt-4 border-b border-gray-400"
+        >
+          <!-- card count -->
+          <div class="flex gap-2 items-center">
+            <div
+              class="border border-[#570DF9] w-11 h-11 rounded-full bg-purple-200 p-1 flex"
+            >
+              <img
+                src="./B13-A5-Github-Issue-Tracker/assets/Aperture.png"
+                alt=""
+              />
+            </div>
+            <div class=" ">
+              <h3 class="text-xl font-semibold md:text-2xl">
+                <span id="card-count">50</span> Issues
+              </h3>
+              <p class="text-xs font-semibold md:text-sm">
+                Track & manage your project issues
+              </p>
+            </div>
+          </div>
+          <!-- Open & Close Shut -->
+          <div
+            class="flex gap-3 font-semibold text-sm md:text-sm md:mx-8 md:gap-6"
+          >
+            <p><i class="fa-solid fa-circle text-green-700"></i> Open</p>
+            <p><i class="fa-solid fa-circle text-purple-400"></i> Closed</p>
+          </div>
+        </div>
+
+        <div
+          id="card-container"
+          class="my-4 grid gap-4 justify-center lg:grid-cols-4 sm:grid-cols-2 md:p-3"
+        ></div>
+      </section>
+
+      <dialog id="card-detail-modal" class="modal"></dialog>
+    </main>
+
+    <script src="./home.html"></script>
   </body>
 </html>
