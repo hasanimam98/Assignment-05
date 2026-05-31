@@ -131,3 +131,65 @@ function togglebtn(id) {
     }
 
 }
+
+const openModal = async(id) => {
+    const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`);
+    const details = await res.json();
+    console.log(details.data);
+    const card = details.data;
+    const priorityClass = card.priority == "high" ? "badge-error" : card.priority == "low" ? "bg-gray-600 text-white" : "badge-warning";
+    const statusClass = card.status == "open" ? "badge-success" : "badge-primary";
+    console.log(card.labels);
+
+    cardDetailModal.innerHTML = `
+        <div class="modal-box">
+        <h3 class="text-lg font-bold mb-2">${card.title}</h3>
+        <div class="flex gap-3 ">
+        <span class=" badge ${statusClass}">${card.status}</span> <span>  • Opened by ${card.assignee}</span>  <span>• ${new Date(card.updatedAt).toLocaleDateString()}</span>
+        </div>
+
+        <div class="card-actions justify-start my-5">
+                        <div class="badge bg-red-100 badge-outline badge-error">${card.labels[0] == "bug"? ` <i class="fa-solid fa-bug"></i>`: card.labels[0] == "enhancement"?`<i class="fa-solid fa-rocket"></i>`: `<i class="fa-brands fa-readme"></i>`}  ${card.labels[0]}</div>
+                        ${card.labels[1] ? `
+                        <div class="badge badge-outline bg-amber-50 badge-warning">
+                        <img src="./assets/vector.png" alt="">
+                        ${card.labels[1]}
+                        </div>` : ""}
+                        </div>
+
+    <p class="py-4">${card.description}</p>
+
+        <div class="bg-gray-100 p-4 grid grid-cols-2 justify-start rounded">
+            <div >
+              <p>Assignee:</p>
+              <p class="font-bold">${card.assignee}</p>
+            </div>
+            <div>
+              <p class="text-gray-600">Priority:</p>
+              <div class="badge  text-white  ${priorityClass}">${card.priority}</div>
+            </div>
+        </div>
+        <div class="modal-action">
+        <form method="dialog">
+            <!-- if there is a button in form, it will close the modal -->
+            <button class="btn btn-primary">Close</button>
+        </form>
+        </div>
+    </div>
+
+
+
+document.getElementById("search-btn").addEventListener("click", () => {
+    const searchInput = document.getElementById("searchInput");
+    const searchValue = searchInput.value.trim().toLowerCase();
+    console.log(searchValue);
+    
+    fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValue}`)
+        .then(res => res.json())
+        .then(data => {
+            const allCard = data.data; // API response er data
+            displayCard(allCard);
+        })
+    
+})
+
