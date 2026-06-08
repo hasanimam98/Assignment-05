@@ -320,8 +320,8 @@ function displayCard(cards) {
 
                 <div class="flex justify-between">
                     <div>
-                        ${card.status == "open"
-                            ? `<img src="./assets/Open-Status.png" />`
+                        ${card.status == ""
+                            ? `<img src="Open-Status.png"`
                             : `<img src="./assets/Closed-Status.png" />`}
                     </div>
 
