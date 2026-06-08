@@ -29,5 +29,64 @@
       referrerpolicy="no-referrer"
     />
   </head>
-  <body></body>
+  <body class="min-h-screen flex items-center justify-center bg-gray-300">
+    <div class="space-y-1 bg-white shadow mx-auto text-center p-6 rounded">
+      <div class="logo mx-auto pt-1">
+        <div class="flex justify-center">
+          <img
+            src="./B13-A5-Github-Issue-Tracker/assets/github-logo.png"
+            alt="github logo"
+          />
+        </div>
+        <h2 class="text-lg md:text-xl font-bold">Git Issues Track</h2>
+        <p class="text-xs font-semibold">Sign in to manage issues</p>
+      </div>
+
+      <fieldset class="fieldset border-base-350 mx-auto">
+        <label class="label font-semibold text-black">Username</label>
+        <input
+          id="username-input"
+          type="text"
+          class="input w-full"
+          placeholder="Enter Username"
+        />
+        <p class="text-left mb-2 text-purple-950">Default: admin</p>
+
+        <label class="label font-semibold text-black">Password</label>
+        <input
+          id="password-input"
+          type="password"
+          class="input w-full"
+          placeholder="Enter Password"
+        />
+        <p class="text-left text-purple-950">Default: admin123</p>
+
+        <button id="sign-in-btn" class="btn btn-primary text-white mt-4">
+          Sign In
+        </button>
+      </fieldset>
+
+      <div class="text-center">
+        <div class="flex items-center gap-2 mb-2">
+          <div class="flex-1 h-px bg-gray-300"></div>
+          <span class="text-gray-500 text-sm">OR</span>
+          <div class="flex-1 h-px bg-gray-300"></div>
+        </div>
+
+        <p class="text-sm text-gray-500">Demo Credentials:</p>
+
+        <div class="bg-base-200 rounded-lg py-1 px-20 inline-block shadow-sm">
+          <p class="text-sm">
+            <span class="font-semibold">Username:</span> admin
+          </p>
+          <p class="text-sm">
+            <span class="font-semibold">Password:</span> admin123
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- <script src="./JS/Singin.js"></script> -->
+    <script src="./JS/Singin.js"></script>
+  </body>
 </html>
